@@ -1,0 +1,29 @@
+.layout_min_height {
+	min-height: calc(100vh - 50px);
+}
+
+@mixin dimmed {
+	width: calc(100vh - 250px);
+}
+
+@mixin dimmed_r {
+	width: calc(100vh - 300px);
+}
+
+.dimmed_layer {
+	display: block;
+	position: fixed;
+	top: 50px;
+	left: 250px;
+	right: 45px;
+	z-index: 10;
+	width: dimmed();
+	height: 100%;
+	background-color: #000;
+	opacity: 0.3;
+}
+
+.dimmed_r_layer {
+	@extend .dimmed_layer;
+	width: dimmed_r();
+}

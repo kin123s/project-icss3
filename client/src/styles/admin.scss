@@ -1,0 +1,37 @@
+@import "@views/styles/global/layout.scss";
+
+.right_menu {
+	width: 45px;
+	z-index: 999;
+	min-height: calc(100vh - 50px);
+	float: right;
+	background: #fff;
+	margin: 0;
+	border-bottom: 0.7px #000 solid;
+	box-shadow: -0.2em 0 0.4em olive;
+	-webkit-box-shadow: -0.2em 0 0.4em olive;
+	.icons {
+		padding: 15px 15px 15px;
+		width: 45px;
+		display: block;
+		&:hover {
+			background: #b8fcf3;
+		}
+	}
+}
+
+.layer {
+	position: relative;
+	width: 100%;
+	.use_r_menu {
+		margin-right: 45px;
+	}
+}
+
+.card_list {
+	top: 50px;
+	left: 250px;
+	width: 100%;
+	.test {
+	}
+}
