@@ -4,34 +4,15 @@ import classNames from "classnames"
 
 import RightList from "@views/components/menu/Admin_RightList"
 
-import View_Card from "@views/components/listview/Card"
+type TMenu = {
+	Icon: any
+	tip: string
+	Component: any
+}
 
-import { Search } from "styled-icons/boxicons-regular/Search"
-
-const MenuList = [
-	{
-		Icon: Search,
-		tip: "Hello world!",
-		Component: View_Card
-	},
-	{
-		Icon: Search,
-		tip: "Hello world!",
-		Component: () => <div>2</div>
-	},
-	{
-		Icon: Search,
-		tip: "Hello world!",
-		Component: () => <div>3</div>
-	},
-	{
-		Icon: Search,
-		tip: "Hello world!",
-		Component: () => <div>4</div>
-	}
-]
-
-export interface IAppProps {}
+export interface IAppProps {
+	Menu: Array<TMenu>
+}
 
 export default class App extends React.Component<IAppProps, any> {
 	constructor(props: IAppProps) {
@@ -47,27 +28,39 @@ export default class App extends React.Component<IAppProps, any> {
 	}
 
 	dummdOpenEvent(event: any, number: number) {
-		console.log("number", event, number)
-		this.setState({ dimmed: true, active_number: number })
+		let dimmed = this.state.dimmed
+
+		console.log(number)
+		if (this.state.active_number === number) {
+			dimmed = false
+		} else {
+			dimmed = true
+		}
+
+		this.setState({
+			dimmed: dimmed,
+			active_number: this.state.active_number === number ? 0 : number
+		})
 	}
 
 	public render() {
 		const { dimmed, active_number } = this.state
 
+		const { Menu } = this.props
+
 		return (
 			<div className={classNames(styles.right_menu)}>
 				<div className={dimmed ? styles.dimmed_r_layer : ""} />
-				{MenuList.map((row, index) => {
+				{Menu.map((row, index) => {
 					const indexKeys = index + 1
-					const target = `icons_${index}`
+					const target = `r_menu_${indexKeys}`
 
 					const ActiveCheck = active_number === indexKeys ? true : false
-					console.log(indexKeys, active_number, ActiveCheck)
 
 					return (
 						<RightList
 							onClick={this.dummdOpenEvent}
-							key={index}
+							key={target}
 							target={target}
 							Icon={row.Icon}
 							tip={row.tip}

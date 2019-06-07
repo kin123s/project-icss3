@@ -3,6 +3,7 @@ import * as React from "react"
 import * as styles from "@views/styles/admin.scss"
 
 import { Tooltip } from "reactstrap"
+import classNames from "classnames"
 
 export interface IAppProps {
 	onClick: any
@@ -45,7 +46,7 @@ export default class App extends React.Component<IAppProps, any> {
 		return (
 			<div>
 				<div
-					className={styles.icons}
+					className={classNames(styles.icons, active ? styles.active : "")}
 					id={target}
 					onClick={e => {
 						this.HandleClickEvent(e, index)

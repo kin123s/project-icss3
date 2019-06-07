@@ -15,7 +15,7 @@ export default class Routes extends React.Component<IRoutesProps, any> {
 					<Route path="/member" component={Member} />
 					<Route path="/Admin" component={Admin} />
 					<Route path="/Main" component={Main} />
-					<Redirect to="/Admin" />
+					<Redirect to="/admin" />
 				</Switch>
 			</div>
 		)

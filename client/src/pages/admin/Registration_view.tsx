@@ -3,8 +3,35 @@ import * as styles from "@views/styles/admin.scss"
 // import classNames from "classnames"
 
 import RightMenu from "@views/components/menu/Admin_RightMenu"
-// import { Switch, Route } from "react-router-dom"
+// rightMenu S
+import { Search } from "styled-icons/boxicons-regular/Search"
+import { CreditCard } from "styled-icons/feather/CreditCard"
 
+import { Right_card } from "@views/components/admin/registration"
+
+const MenuList = [
+	{
+		Icon: CreditCard,
+		tip: "카드발송",
+		Component: Right_card
+	},
+	{
+		Icon: Search,
+		tip: "Hello world!",
+		Component: () => <div>2</div>
+	},
+	{
+		Icon: Search,
+		tip: "Hello world!",
+		Component: () => <div>3</div>
+	},
+	{
+		Icon: Search,
+		tip: "Hello world!",
+		Component: () => <div>4</div>
+	}
+]
+// rightMenu E
 export interface IAppProps {
 	match: {
 		params: {
@@ -32,7 +59,7 @@ export default class App extends React.Component<IAppProps, IAppState> {
 	public render() {
 		return (
 			<div className={styles.layer}>
-				<RightMenu />
+				<RightMenu Menu={MenuList} />
 
 				<div className={styles.use_r_menu}>
 					<MainViews {...this.props} />

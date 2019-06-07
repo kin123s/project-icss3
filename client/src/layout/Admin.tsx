@@ -1,19 +1,43 @@
 import * as React from "react"
 import classNames from "classnames"
-import * as styles from "@views/styles/layouts/admin.scss"
+import * as styles from "@views/styles/admin.scss"
 
 import Menu from "@views/components/admin/Menu"
 
 // route RouteList
 import { RouteList, RouteRender } from "@views/config/routes/RouteAdmin"
 
+// import { Zap } from "styled-icons/octicons/Zap"
+// import Dashboard from "@views/pages/admin/Dashboard"
+
+// const Lists = [
+// 	{
+// 		header: "Dashboard",
+// 		items: [
+// 			{
+// 				title: "Dashboard",
+// 				url: "/admin/dashboards",
+// 				component: Dashboard,
+// 				icon: Zap,
+// 				use: true,
+// 				show: true
+// 			}
+// 		]
+// 	}
+// ]
+
 export interface IWithProps {}
 
 export default class Admin extends React.Component<IWithProps, any> {
 	constructor(props: IWithProps) {
 		super(props)
+		this.MenuClickEvent = this.MenuClickEvent.bind(this)
+	}
 
-		console.log(this.props)
+	MenuClickEvent(tab: number, sub_tab: number) {
+		console.log("click", tab, sub_tab)
+
+		return true
 	}
 
 	render() {
@@ -33,18 +57,25 @@ export default class Admin extends React.Component<IWithProps, any> {
 						<div className={classNames(styles.app_menu, styles.layer)}>
 							<div className={classNames(styles.app_menu)}>
 								{RouteList.map((list_row, index) => {
+									const MenuTabs = index + 1
+
 									return (
 										<ul key={index} className={classNames(styles.app_menu)}>
 											<li className={classNames(styles.app_menu, styles.header)}>
 												{list_row.header}
 											</li>
-											{list_row.list.map((row, index) => {
+											{list_row.list.map((row, list_row_index) => {
+												const MenuSubTabs = list_row_index + 1
+
 												return (
 													<Menu
 														items={row.items}
 														key={index}
 														title={row.title}
 														title_icon={row.title_icon}
+														tab={MenuTabs}
+														sub_tab={MenuSubTabs}
+														onClick={this.MenuClickEvent}
 													/>
 												)
 											})}

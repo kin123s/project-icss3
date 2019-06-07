@@ -2,6 +2,7 @@ import * as React from "react"
 import { Switch, Route, Redirect } from "react-router-dom"
 
 import { Zap } from "styled-icons/octicons/Zap"
+
 import { Menu as MenuIcon } from "styled-icons/boxicons-regular/Menu"
 
 import Dashboard from "@views/pages/admin/Dashboard"
@@ -28,8 +29,8 @@ export const RouteList = [
 						icon: Zap
 					},
 					{
-						name: "messager",
-						location: "/admin/messager",
+						name: "registration view",
+						location: "/admin/registration_view/iwd407113",
 						icon: Zap
 					}
 				]
