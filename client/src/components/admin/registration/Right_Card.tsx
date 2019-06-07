@@ -69,7 +69,7 @@ export default class App extends React.Component<IAppProps, any> {
 	public render() {
 		return (
 			<RightContentsLayer padding="10px" left={400}>
-				<h4>카드첨부</h4>
+				<h4>카드첨부1</h4>
 				<SearchForm />
 				<Card list={CardList} />
 			</RightContentsLayer>
